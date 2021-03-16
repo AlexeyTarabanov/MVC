@@ -95,6 +95,15 @@ import com.javarush.task.task36.task3608.view.UsersView;
  3. В классе MainModel:
  - реализовал метод getAllUsers()
  - исправил метод loadUsers()
+
+ Шаг 9.
+ 1. Создал и реализовал методы:
+ - в классе EditUserView - fireEventUserChanged(String name, long id, int level)
+ - в классе Controller - onUserChange(String name, long id, int level)
+ - в итерфейсе Model - changeUserData(String name, long id, int level)
+ (реализовал его в классах MainModel и FakeModel)
+ 2. В классе Solution:
+ - вызвал метод fireEventUserChanged()
  */
 
 public class Solution {
@@ -116,6 +125,8 @@ public class Solution {
         usersView.fireEventOpenUserEditForm(126);
         // запуск события - удалить User-a
         editUserView.fireEventUserDeleted(124L);
+        // запуск события - изменить пользователя
+        editUserView.fireEventUserChanged("Tarabanov", 123, 1);
         // запуск события - показать удаленных пользователей
         usersView.fireEventShowDeletedUsers();
     }

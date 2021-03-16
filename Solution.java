@@ -84,7 +84,17 @@ import com.javarush.task.task36.task3608.view.UsersView;
  - установил controller для editUserView
  - вызвал метод fireEventShowDeletedUsers
 
-
+ Шаг 8.
+ 1. Создал и реализовал методы:
+ - в классе EditUserView - fireEventUserDeleted(long id),
+ - в классе Controller - onUserDelete(long id),
+ - в итерфейсе Model - deleteUserById(long id)
+ (реализовал его в классах MainModel и FakeModel)
+ 2. В классе Solution:
+ - вызвал метод fireEventShowDeletedUsers
+ 3. В классе MainModel:
+ - реализовал метод getAllUsers()
+ - исправил метод loadUsers()
  */
 
 public class Solution {
@@ -104,6 +114,8 @@ public class Solution {
         usersView.fireEventShowAllUsers();
         // запуск события - открыть форму редактирования пользователя
         usersView.fireEventOpenUserEditForm(126);
+        // запуск события - удалить User-a
+        editUserView.fireEventUserDeleted(124L);
         // запуск события - показать удаленных пользователей
         usersView.fireEventShowDeletedUsers();
     }

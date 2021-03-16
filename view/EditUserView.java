@@ -20,4 +20,9 @@ public class EditUserView implements View {
         System.out.println("\t" + modelData.getActiveUser());
         System.out.println( "===================================================");
     }
+
+    // запуск события - удалить User-a
+    public void fireEventUserDeleted(long id) {
+        controller.onUserDelete(id);
+    }
 }

@@ -18,12 +18,14 @@ public class MainModel implements Model{
 
     @Override
     public void loadUsers() {
+        modelData.setDisplayDeletedUserList(false);
         // получем всех пользователей между 1 и 100 уровнями и кладем их в modelData
         modelData.setUsers(userService.getUsersBetweenLevels(1, 100));
     }
 
     @Override
     public void loadDeletedUsers() {
+        modelData.setDisplayDeletedUserList(true);
         modelData.setUsers(userService.getAllDeletedUsers());
     }
 }

@@ -52,6 +52,25 @@ import com.javarush.task.task36.task3608.view.UsersView;
  (реализовал его в классах MainModel и FakeModel)
  2. В классе Solution вызвал метод fireEventShowDeletedUsers
 
+ Шаг 6.
+ 1. В классе ModelData:
+ - создал поле User activeUser, геттер и сеттер для него
+ (будет хранить в себе конкретного пользователя)
+ 2. В пакете view:
+ - создал класс EditUserView, реализующий View.
+ (он будет отображать данные о редактировании конкретного пользователя)
+ - реализовал метод refresh()
+ 3. В классе Controller:
+ - создал поле EditUserView editUserView и сеттер для него
+ 4. В классе ModelData:
+ - создал поле boolean displayDeletedUserList(), геттер и сеттер для него
+ (будет хранить булево значение удалены ли пользователи)
+ 5. В классе UsersView:
+ - изменил метод refresh
+ (так, чтобы он отображал "All users:" либо "All deleted users:" в зависимости от того, какие пользователи находятся в списке)
+ 6. В классе MainModel:
+ - добавил в методы loadUsers() и loadDeletedUsers() вызов метода-флага setDisplayDeletedUserList
+ (тем самым помечая какие ползователи находятся в списке)
 
  */
 

@@ -1,6 +1,7 @@
 package com.javarush.task.task36.task3608.controller;
 
 import com.javarush.task.task36.task3608.model.Model;
+import com.javarush.task.task36.task3608.view.EditUserView;
 import com.javarush.task.task36.task3608.view.UsersView;
 
 // Этот класс будет получать запрос от клиента, оповещать Модель об этом,
@@ -11,14 +12,21 @@ public class Controller {
 // Controller взаимодействует с конкретной реализацией Model-и посредством (абстрактного) интерфейса Model
 
     private Model model;
+    // отображать список пользователей
     private UsersView usersView;
+    // редактировать пользователя
+    private EditUserView editUserView;
+
+    public void setModel(Model model) {
+        this.model = model;
+    }
 
     public void setUsersView(UsersView usersView) {
         this.usersView = usersView;
     }
 
-    public void setModel(Model model) {
-        this.model = model;
+    public void setEditUserView(EditUserView editUserView) {
+        this.editUserView = editUserView;
     }
 
     // загружаем пользователей

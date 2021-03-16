@@ -3,6 +3,7 @@ package com.javarush.task.task36.task3608;
 import com.javarush.task.task36.task3608.controller.Controller;
 import com.javarush.task.task36.task3608.model.MainModel;
 import com.javarush.task.task36.task3608.model.Model;
+import com.javarush.task.task36.task3608.view.EditUserView;
 import com.javarush.task.task36.task3608.view.UsersView;
 
 /**
@@ -72,20 +73,37 @@ import com.javarush.task.task36.task3608.view.UsersView;
  - добавил в методы loadUsers() и loadDeletedUsers() вызов метода-флага setDisplayDeletedUserList
  (тем самым помечая какие ползователи находятся в списке)
 
+ Шаг 7.
+ 1. Создал и реализовал методы:
+ - в классе UsersView - fireEventOpenUserEditForm(long id),
+ - в классе Controller - onOpenUserEditForm(long userId),
+ - в итерфейсе Model - loadUserById(long userId)
+ (реализовал его в классах MainModel и FakeModel)
+ 2. В классе Solution:
+ - создал объект editUserView, передал его controller
+ - установил controller для editUserView
+ - вызвал метод fireEventShowDeletedUsers
+
+
  */
 
 public class Solution {
     public static void main(String[] args) {
         Model model = new MainModel();
         UsersView usersView = new UsersView();
+        EditUserView editUserView = new EditUserView();
         Controller controller = new Controller();
 
         usersView.setController(controller);
+        editUserView.setController(controller);
         controller.setModel(model);
         controller.setUsersView(usersView);
+        controller.setEditUserView(editUserView);
 
         // запуск события - показать всех пользователей
         usersView.fireEventShowAllUsers();
+        // запуск события - открыть форму редактирования пользователя
+        usersView.fireEventOpenUserEditForm(126);
         // запуск события - показать удаленных пользователей
         usersView.fireEventShowDeletedUsers();
     }

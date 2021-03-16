@@ -27,4 +27,9 @@ public class UsersView implements View{
     public void fireEventShowAllUsers() {
         controller.onShowAllUsers();
     }
+
+    // запуск события - показать удаленных пользователей
+    public void fireEventShowDeletedUsers() {
+        controller.onShowAllDeletedUsers();
+    }
 }

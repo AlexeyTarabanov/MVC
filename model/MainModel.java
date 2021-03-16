@@ -21,4 +21,9 @@ public class MainModel implements Model{
         // получем всех пользователей между 1 и 100 уровнями и кладем их в modelData
         modelData.setUsers(userService.getUsersBetweenLevels(1, 100));
     }
+
+    @Override
+    public void loadDeletedUsers() {
+        modelData.setUsers(userService.getAllDeletedUsers());
+    }
 }

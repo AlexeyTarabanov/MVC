@@ -31,10 +31,11 @@ import com.javarush.task.task36.task3608.view.UsersView;
  - добавил поле Controller controller вместе с сеттером
  - реализовал метод refresh()
  - создал и реализовал метод fireEventShowAllUsers(), который будет эмулировать событие клиента
- https://cdn.javarush.ru/images/comment/4404c204-34ef-46bf-9d16-100801a43711/original.jpeg
  3. В классе Controller:
  - добавил поле UsersView usersView и сеттер для него
  - в методе onShowAllUsers после загрузки прользователей, добавил обновленные данные во usersView (refresh)
+
+ https://cdn.javarush.ru/images/comment/4404c204-34ef-46bf-9d16-100801a43711/original.jpeg
 
  Шаг 4.
  1. В пакете model:
@@ -42,6 +43,14 @@ import com.javarush.task.task36.task3608.view.UsersView;
  - так как Модель обращается к сервисам, то добавил поле UserService userService и проинициализировал его объектом
  - реализовал методы getModelData() и loadUsers()
  2. В классе Solution заменил FakeModel на MainModel
+
+ Шаг 5.
+ 1. Создал и реализовал методы:
+ - в классе UsersView - fireEventShowDeletedUsers(),
+ - в классе Controller - onShowAllDeletedUsers(),
+ - в итерфейсе Model - loadDeletedUsers()
+ (реализовал его в классах MainModel и FakeModel)
+ 2. В классе Solution вызвал метод fireEventShowDeletedUsers
 
 
  */
@@ -56,6 +65,9 @@ public class Solution {
         controller.setModel(model);
         controller.setUsersView(usersView);
 
+        // запуск события - показать всех пользователей
         usersView.fireEventShowAllUsers();
+        // запуск события - показать удаленных пользователей
+        usersView.fireEventShowDeletedUsers();
     }
 }
